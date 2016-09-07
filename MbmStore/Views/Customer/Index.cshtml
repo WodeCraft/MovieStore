@@ -5,7 +5,7 @@
 }
 
 @helper RenderCustomer(Customer customer) {
-    @customer.FirstName @customer.LastName<br />
+    @customer.FirstName @customer.LastName @String.Format(" ({0})", string.Join(", ", customer.PhoneNumbers))<br />
     @customer.Address<br />
     @customer.Zip @customer.City
 }

@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MbmStore.Models
 {
     public class Customer
     {
         private List<string> phoneNumbers = new List<string>();
+        private DateTime birthDate;
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,6 +20,41 @@ namespace MbmStore.Models
             get
             {
                 return phoneNumbers;
+            }
+        }
+
+        public DateTime BirthDate
+        {
+            get
+            {
+                return birthDate;
+            }
+            set
+            {
+                birthDate = value;
+
+                int age = Age;
+                if (age < 0 && age > 120)
+                {
+                    throw new Exception("Age not accepted");
+                }
+            }
+        }
+
+        public int Age
+        {
+            get
+            {
+                DateTime now = DateTime.Now;
+                int age = now.Year - birthDate.Year;
+
+                if (now.Month < birthDate.Month
+                    || (now.Month == birthDate.Month && now.Day < birthDate.Day))
+                {
+                    age--;
+                }
+
+                return age;
             }
         }
 

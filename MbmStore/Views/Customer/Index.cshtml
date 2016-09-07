@@ -5,7 +5,15 @@
 }
 
 @helper RenderCustomer(Customer customer) {
-    @customer.FirstName @customer.LastName @String.Format(" ({0})", string.Join(", ", customer.PhoneNumbers))<br />
+    if ("John".Equals(customer.FirstName))
+    {
+        @customer.FirstName @customer.LastName @String.Format(" is {0} years old.", customer.Age)<br />
+        @String.Format(" ({0})", string.Join(", ", customer.PhoneNumbers))<br />
+}
+else
+{
+        @customer.FirstName @customer.LastName @String.Format(" ({0})", string.Join(", ", customer.PhoneNumbers))<br />
+}
     @customer.Address<br />
     @customer.Zip @customer.City
 }

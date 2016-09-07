@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MbmStore.Models
 {
     public class Movie
     {
         // fields
-        private string title; 
-        private decimal price; 
+        private string title;
+        private decimal price;
         private string imageUrl;
+        private string director;
 
         // properties
         public string Title
         {
             get { return title; } // read
-            set { title = value; } // write
         }
 
-        public decimal Price 
+        public decimal Price
         {
             set
             {
@@ -27,7 +24,8 @@ namespace MbmStore.Models
                 {
                     throw new Exception("Price is not accepted");
                 }
-                else {
+                else
+                {
                     price = value;
                 }
             }
@@ -35,10 +33,11 @@ namespace MbmStore.Models
         }
 
 
-        public string ImageUrl 
+        public string ImageUrl { get; set; }
+
+        public string Director
         {
-            get { return imageUrl; }
-            set { imageUrl = value; }
+            get { return director; }
         }
 
 
@@ -49,11 +48,12 @@ namespace MbmStore.Models
             this.price = price;
         }
 
-        public Movie(string title, decimal price, string imageUrl)
+        public Movie(string title, decimal price, string imageUrl, string director)
         {
             this.title = title;
             this.price = price;
             this.imageUrl = imageUrl;
+            this.director = director;
         }
     }
 }

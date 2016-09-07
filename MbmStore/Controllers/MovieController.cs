@@ -1,9 +1,6 @@
-﻿using System;
+﻿using MbmStore.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MbmStore.Models;
 
 namespace MbmStore.Controllers
 {
@@ -12,13 +9,24 @@ namespace MbmStore.Controllers
         // GET: Movie
         public ActionResult Index()
         {
-            
             // create a new Movie object with instance name jungleBook
-            Movie jungleBook = new Movie("Jungle Book", 160.50m, "junglebook.jpg");
+            Movie jungleBook = new Movie("Jungle Book", 160.50m, "junglebook.jpg", "Jon Favreau");
+
+            Movie bladeRunner = new Movie("Blade Runner", 198.95m, "bladerunner.jpg", "Ridley Scott");
+
+            Movie subway = new Movie("Subway", 89.50m, "subway.jpg", "Luc Besson");
+
+            // Step 1
+            List<Movie> movies = new List<Movie>();
+            movies.Add(jungleBook);
+            movies.Add(bladeRunner);
+            movies.Add(subway);
 
             // assign a viewbag property to the new Movie object
             ViewBag.JungleBook = jungleBook;
-
+            ViewBag.BladeRunner = bladeRunner;
+            ViewBag.Subway = subway;
+            ViewBag.Movies = movies;
 
             return View();
         }

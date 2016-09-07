@@ -7,7 +7,6 @@ namespace MbmStore.Models
         // fields
         private string title;
         private decimal price;
-        private string imageUrl;
         private string director;
 
         // properties
@@ -52,7 +51,7 @@ namespace MbmStore.Models
         {
             this.title = title;
             this.price = price;
-            this.imageUrl = imageUrl;
+            ImageUrl = imageUrl;
             this.director = director;
         }
     }

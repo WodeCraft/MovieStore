@@ -31,12 +31,14 @@ namespace MbmStore.Models
             }
             set
             {
-                birthDate = value;
-
-                int age = Age;
-                if (age < 0 && age > 120)
+                int age = calculateAge(value);
+                if (age < 0 || age > 120)
                 {
                     throw new Exception("Age not accepted");
+                }
+                else
+                {
+                    birthDate = value;
                 }
             }
         }
@@ -45,16 +47,7 @@ namespace MbmStore.Models
         {
             get
             {
-                DateTime now = DateTime.Now;
-                int age = now.Year - birthDate.Year;
-
-                if (now.Month < birthDate.Month
-                    || (now.Month == birthDate.Month && now.Day < birthDate.Day))
-                {
-                    age--;
-                }
-
-                return age;
+                return calculateAge(birthDate);
             }
         }
 
@@ -74,6 +67,20 @@ namespace MbmStore.Models
                 phoneNumbers = new List<string>();
             }
             phoneNumbers.Add(phone);
+        }
+
+        private int calculateAge(DateTime checkedDate)
+        {
+            DateTime now = DateTime.Now;
+            int age = now.Year - checkedDate.Year;
+
+            if (now.Month < checkedDate.Month
+                || (now.Month == checkedDate.Month && now.Day < checkedDate.Day))
+            {
+                age--;
+            }
+
+            return age;
         }
 
     }

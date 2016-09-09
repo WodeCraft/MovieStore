@@ -18,6 +18,7 @@ namespace MbmStore.Controllers
             maz.BirthDate = new System.DateTime(1972, 2, 26);
             Customer liz = new Customer("Lizzy", "Hale", "Upper Crest", "1342", "Oklahoma");
             liz.addPhone("442-930285");
+            //liz.BirthDate = new System.DateTime(1845, 9, 18);
 
             ViewBag.John = john;
             ViewBag.Maz = maz;

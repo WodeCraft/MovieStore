@@ -39,6 +39,7 @@ namespace MbmStore.Models
             get { return director; }
         }
 
+        public string Producer { get; set; }
 
         // constructors
         public Movie(string title, decimal price)

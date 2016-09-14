@@ -51,6 +51,14 @@ namespace MbmStore.Models
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="address"></param>
+        /// <param name="zip"></param>
+        /// <param name="city"></param>
         public Customer(string firstName, string lastName, string address, string zip, string city)
         {
             FirstName = firstName;
@@ -60,15 +68,27 @@ namespace MbmStore.Models
             City = city;
         }
 
+        /// <summary>
+        /// Mehtod for adding a new phone number to the list of phone numbes.
+        /// </summary>
+        /// <param name="phone"></param>
         public void addPhone(string phone)
         {
             if (phoneNumbers == null)
             {
                 phoneNumbers = new List<string>();
             }
-            phoneNumbers.Add(phone);
+            if (string.IsNullOrEmpty(phone) == false)
+            {
+                phoneNumbers.Add(phone);
+            }
         }
 
+        /// <summary>
+        /// Method for calculating the age of a customer based on the difference between the specified <paramref name="checkedDate"/> and DateTime.Now.
+        /// </summary>
+        /// <param name="checkedDate"></param>
+        /// <returns></returns>
         private int calculateAge(DateTime checkedDate)
         {
             DateTime now = DateTime.Now;
